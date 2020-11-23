@@ -2,9 +2,10 @@
   "name": "vc_encoder",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start" : "nodemon index.js",
+    "start": "nodemon src/index.js",
+    "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +27,10 @@
   "homepage": "https://github.com/souanf/nodejs_VCEncoder#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-handlebars": "^5.2.0"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0",
     "nodemon": "^2.0.6"
   }
 }
