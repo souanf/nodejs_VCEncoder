@@ -2,3 +2,20 @@
 h1{
     color: $text-color;
 }
+hr{
+    border: 3px solid $text-color;
+    border-radius: 5px;
+    margin: 0px;
+}
+.nav, .footer{
+    text-align: center;
+}
+.nav h1, .footer h1{
+    font-family : iCiel Gotham;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: $text-color;
+    letter-spacing : 3px;
+    font-size: 30px;
+}
