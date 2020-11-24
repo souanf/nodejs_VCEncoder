@@ -1,19 +1,77 @@
+body {
+  background-color: RGB(245, 243, 244); }
+
 h1 {
   color: RGB(51, 53, 51); }
 
 hr {
-  border: 3px solid RGB(51, 53, 51);
+  border: 2px solid RGB(51, 53, 51);
   border-radius: 5px;
   margin: 0px; }
 
-.nav, .footer {
+.title {
   text-align: center; }
 
-.nav h1, .footer h1 {
+.title h1 {
   font-family: iCiel Gotham;
   margin: auto;
   margin-top: 40px;
   margin-bottom: 40px;
   color: RGB(51, 53, 51);
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   font-size: 30px; }
+
+.navbar {
+  padding: 0px;
+  padding-top: 30px; }
+
+.navbar-light .navbar-toggler {
+  border-color: transparent;
+  padding: 0px; }
+
+.navbar-toggler-icon {
+  font-size: 50px; }
+
+.footer {
+  width: 100%;
+  float: none;
+  position: fixed;
+  bottom: 0; }
+
+.footer h1 {
+  text-align: center;
+  margin: auto;
+  margin-top: 40px;
+  color: RGB(51, 53, 51);
+  letter-spacing: 4px;
+  font-size: 30px; }
+
+footer h2 {
+  text-align: center;
+  font-family: iCiel Gotham;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 70px; }
+
+.upload {
+  margin-top: 15px; }
+
+.custom-file-label {
+  font-family: iCiel Gotham;
+  color: RGB(51, 53, 51);
+  letter-spacing: 2px;
+  margin: 0px 30%; }
+
+.submit {
+  font-size: 15px;
+  color: RGB(245, 243, 244);
+  font-family: iCiel Gotham;
+  letter-spacing: 4px;
+  background-color: RGB(51, 53, 51);
+  border-color: RGB(51, 53, 51);
+  padding: 10px 20px; }
+
+.submit-button {
+  margin: auto;
+  text-align: center;
+  margin: 15px; }
