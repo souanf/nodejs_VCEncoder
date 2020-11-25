@@ -74,8 +74,11 @@ footer a{
     padding: 10px;
     text-align: center;
 }
-#imageSrc{
+#imageSrc {
     height: 300px;
+}
+#image1Src, #image2Src{
+    width: 500px;
 }
 .upload{
     margin-top: 15px;
@@ -84,7 +87,10 @@ footer a{
     font-family : iCiel Gotham;
     color: $text-color;
     letter-spacing : 2px;
-    margin: 0px 30%;
+    margin: 0px 10%;
+}
+.encrypt-upload{
+    margin: 0px 25%;
 }
 .submit{
     font-size: 15px;
@@ -125,6 +131,7 @@ footer a{
     border: 2px solid $text-color;
 }
 .output-download a, .output-download button{
+    cursor: pointer;
     width: 48%;
     color: $fill-color;
     background-color: $text-color;

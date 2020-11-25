@@ -1,1 +1,86 @@
-<h1>hello</h1>
+<div style="display: flex;">
+    <div style="margin: auto;">
+        <div class="input-img-container">
+        <img id="image1Src" src="/img/share1_thumnails.jpg"/>
+        </div>
+        <div class="custom-file upload">
+        <input type="file" class="custom-file-input" id="customFile1" name="filename" disabled>
+        <label class="custom-file-label" for="customFile1">Choose your image</label>
+        </div>
+    </div>
+    <div style="margin: auto;">
+        <div class="input-img-container">
+        <img id="image2Src" src="/img/share2_thumnails.jpg"/>
+        </div>
+        <div class="custom-file upload">
+        <input type="file" class="custom-file-input" id="customFile2" name="filename" disabled>
+        <label class="custom-file-label" for="customFile2">Choose your image</label>
+        </div>
+    </div>
+</div>
+<div class="submit-button">
+  <button type="submit" class="btn submit" id="decrypt" disabled>DECRYPT</button>
+</div>
+
+<div class= "output-caption">
+  <p>RESULT</p>
+</div>
+
+<div class="output">
+  <canvas id="canvas-decrypt"></canvas>
+</div>
+
+<div class= "output-download">
+  <a id="decrypt-download" download="share1.png">
+    <button class="download" type="button" onClick="download('canvas-decrypt','decrypt-download')" disabled>DOWNLOAD</button>
+  </a>
+</div>
+
+<script>
+//SHOW FILE NAME
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+<script type="text/javascript">
+//load opencv lib
+function onOpenCvReady() 
+{
+  document.getElementsByClassName("submit")[0].disabled = false;
+  document.getElementsByClassName("custom-file-input")[0].disabled = false;
+  document.getElementsByClassName("custom-file-input")[1].disabled = false;
+}
+//DECRYPT
+	let img1Element = document.getElementById('image1Src');
+	let input1Element = document.getElementById('customFile1');
+	input1Element.addEventListener('change', (e) => {
+      document.getElementsByClassName("download")[0].disabled = true;
+      img1Element.src = URL.createObjectURL(e.target.files[0]);},false);
+
+	let img2Element = document.getElementById('image2Src');
+	let input2Element = document.getElementById('customFile2');
+	input2Element.addEventListener('change', (e) => {
+      document.getElementsByClassName("download")[0].disabled = true;
+      img2Element.src = URL.createObjectURL(e.target.files[0]);},false);
+  
+	document.getElementById("decrypt").onclick = function() 
+	{
+	  	let share1 = cv.imread(img1Element);
+	  	let share2 = cv.imread(img2Element);
+	  	let decrypt = cv.Mat.zeros(share1.rows, share1.cols, share1.type())
+        cv.bitwise_and(share1, share2, decrypt);
+	  	cv.imshow('canvas-decrypt', decrypt);
+	  	share1.delete();
+	  	share2.delete();
+      document.getElementsByClassName("download")[0].disabled = false;
+      document.getElementsByClassName("download")[1].disabled = false;
+	};
+//DOWNLOAD
+function download(canvas_id, download_button_id) 
+{
+  var download = document.getElementById(download_button_id);
+  var image = document.getElementById(canvas_id).toDataURL("image/png").replace("image/png", "image/octet-stream");
+  download.setAttribute("href", image);;
+}
+</script>
