@@ -9,6 +9,7 @@ hr{
     border: 2px solid $text-color;
     border-radius: 5px;
     margin: 0px;
+    background-color: $text-color;
 }
 //header
 .title {
@@ -34,17 +35,26 @@ hr{
 .navbar-toggler-icon{
     font-size: 50px;
 }
+#navbarToggleExternalContent a{
+    
+    font-family : iCiel Gotham;
+    color: $text-color;
+    letter-spacing : 4px;
+    font-size: 20px;
+}
 //footer
 .footer{
+    background-color: $fill-color;
+    z-index: 2;
     width: 100%;
     float: none;
-    position: fixed;
     bottom: 0;
 }
 .footer h1{
     text-align: center;
     margin: auto;
     margin-top: 40px;
+    margin-bottom: 5px;
     color: $text-color;
     letter-spacing : 4px;
     font-size: 30px;
@@ -54,9 +64,19 @@ footer h2{
     font-family: iCiel Gotham;
     font-size: 20px;
     letter-spacing : 2px;
-    margin-bottom: 70px;
+    margin-bottom: 41px;
 }
-//body - upload
+footer a{
+    color: $text-color;
+}
+//body - home
+.input-img-container{
+    padding: 10px;
+    text-align: center;
+}
+#imageSrc{
+    height: 300px;
+}
 .upload{
     margin-top: 15px;
 }
@@ -79,4 +99,41 @@ footer h2{
     margin: auto;
     text-align: center;
     margin: 15px;
+}
+.output{
+    display: flex;
+}
+.output canvas{
+    margin: auto;
+    width: 48%;
+    border: 2px solid $text-color;
+}
+.output-caption, .output-download{
+    display: flex;
+}
+.output-caption p{ 
+    width: 48%;
+    color: $fill-color;
+    background-color: $text-color;
+    margin: auto;
+    text-align: center;
+    font-family: iCiel Gotham;
+    font-size: 20px;
+    letter-spacing : 2px;
+    padding: 5px 0px;
+    border-radius: 4px 4px 0px 0px;
+    border: 2px solid $text-color;
+}
+.output-download a, .output-download button{
+    width: 48%;
+    color: $fill-color;
+    background-color: $text-color;
+    margin: auto;
+    text-align: center;
+    font-family: iCiel Gotham;
+    font-size: 20px;
+    letter-spacing : 2px;
+    padding: 5px 0px;
+    border-radius: 0px 0px 4px 4px;
+    border: 2px solid $text-color;
 }

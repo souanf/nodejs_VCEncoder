@@ -7,7 +7,8 @@ h1 {
 hr {
   border: 2px solid RGB(51, 53, 51);
   border-radius: 5px;
-  margin: 0px; }
+  margin: 0px;
+  background-color: RGB(51, 53, 51); }
 
 .title {
   text-align: center; }
@@ -32,16 +33,24 @@ hr {
 .navbar-toggler-icon {
   font-size: 50px; }
 
+#navbarToggleExternalContent a {
+  font-family: iCiel Gotham;
+  color: RGB(51, 53, 51);
+  letter-spacing: 4px;
+  font-size: 20px; }
+
 .footer {
+  background-color: RGB(245, 243, 244);
+  z-index: 2;
   width: 100%;
   float: none;
-  position: fixed;
   bottom: 0; }
 
 .footer h1 {
   text-align: center;
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 5px;
   color: RGB(51, 53, 51);
   letter-spacing: 4px;
   font-size: 30px; }
@@ -51,7 +60,17 @@ footer h2 {
   font-family: iCiel Gotham;
   font-size: 20px;
   letter-spacing: 2px;
-  margin-bottom: 70px; }
+  margin-bottom: 41px; }
+
+footer a {
+  color: RGB(51, 53, 51); }
+
+.input-img-container {
+  padding: 10px;
+  text-align: center; }
+
+#imageSrc {
+  height: 300px; }
 
 .upload {
   margin-top: 15px; }
@@ -75,3 +94,40 @@ footer h2 {
   margin: auto;
   text-align: center;
   margin: 15px; }
+
+.output {
+  display: flex; }
+
+.output canvas {
+  margin: auto;
+  width: 48%;
+  border: 2px solid RGB(51, 53, 51); }
+
+.output-caption, .output-download {
+  display: flex; }
+
+.output-caption p {
+  width: 48%;
+  color: RGB(245, 243, 244);
+  background-color: RGB(51, 53, 51);
+  margin: auto;
+  text-align: center;
+  font-family: iCiel Gotham;
+  font-size: 20px;
+  letter-spacing: 2px;
+  padding: 5px 0px;
+  border-radius: 4px 4px 0px 0px;
+  border: 2px solid RGB(51, 53, 51); }
+
+.output-download a, .output-download button {
+  width: 48%;
+  color: RGB(245, 243, 244);
+  background-color: RGB(51, 53, 51);
+  margin: auto;
+  text-align: center;
+  font-family: iCiel Gotham;
+  font-size: 20px;
+  letter-spacing: 2px;
+  padding: 5px 0px;
+  border-radius: 0px 0px 4px 4px;
+  border: 2px solid RGB(51, 53, 51); }

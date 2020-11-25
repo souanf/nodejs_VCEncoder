@@ -27,7 +27,8 @@
   "homepage": "https://github.com/souanf/nodejs_VCEncoder#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.2.0"
+    "express-handlebars": "^5.2.0",
+    "scijs": "^0.7.3"
   },
   "devDependencies": {
     "node-sass": "^5.0.0",

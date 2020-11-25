@@ -1,1 +1,134 @@
-<h1> HOME </h1>
+
+<div class="input-img-container">
+  <img id="imageSrc" src="/img/thumnails.jpg"/>
+</div>
+<div class="custom-file upload">
+  <input type="file" class="custom-file-input" id="customFile" name="filename" disabled>
+  <label class="custom-file-label" for="customFile">Choose your image</label>
+</div>
+<div class="submit-button">
+  <button type="submit" class="btn submit" id="generate" disabled>GENERATE</button>
+</div>
+<div class= "output-caption">
+  <p>SHARE1</p>
+  <p>SHARE2</p> 
+</div>
+<div class="output">
+  <canvas id="canvasShare1"></canvas>
+  <canvas id="canvasShare2"></canvas>
+</div>
+<div class= "output-download">
+  <a id="Share1-download" download="share1.png">
+    <button class="download" type="button" onClick="download('canvasShare1','Share1-download')" disabled>DOWNLOAD</button>
+  </a>
+  <a id="Share2-download" download="share2.png">
+    <button class="download" type="button" onClick="download('canvasShare2','Share2-download')" disabled>DOWNLOAD</button>
+  </a>
+</div>
+<script>
+//SHOW FILE NAME
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+<script type="text/javascript">
+//load opencv lib
+function onOpenCvReady() 
+{
+  document.getElementsByClassName("submit")[0].disabled = false;
+  document.getElementsByClassName("custom-file-input")[0].disabled = false;
+}
+//ENCRYPT
+	function getRndInteger(min, max) 
+	{
+  		return Math.floor(Math.random() * (max - min + 1) ) + min;
+	}
+	let imgElement = document.getElementById('imageSrc');
+	let inputElement = document.getElementById('customFile');
+	inputElement.addEventListener('change', (e) => {
+      document.getElementsByClassName("download")[0].disabled = true;
+      document.getElementsByClassName("download")[1].disabled = true;
+      imgElement.src = URL.createObjectURL(e.target.files[0]);},false);
+  
+	document.getElementById("generate").onclick = function() 
+	{
+	  	let img = cv.imread(imgElement);
+	 	  let gray = new cv.Mat();
+	  	let bin = new cv.Mat()
+	  	let mat1 = cv.matFromArray(2, 2, cv.CV_8U, [0, 0, 255, 255]);
+	  	let mat2 = cv.matFromArray(2, 2, cv.CV_8U, [255, 255, 0, 0]);
+	  	let mat3 = cv.matFromArray(2, 2, cv.CV_8U, [0, 255, 0, 255]);
+	  	let mat4 = cv.matFromArray(2, 2, cv.CV_8U, [255, 0, 255, 0]);
+	  	let mat5 = cv.matFromArray(2, 2, cv.CV_8U, [255, 0, 0, 255]);
+	  	let mat6 = cv.matFromArray(2, 2, cv.CV_8U, [0, 255, 255, 0]);
+	  	var selections = [[mat1, mat2], [mat3, mat4], [mat5, mat6]]
+
+	  	cv.cvtColor(img, gray, cv.COLOR_RGBA2GRAY, 0);
+	  	cv.threshold(gray, bin, 177, 255, cv.THRESH_BINARY);
+	  	let share1 = cv.Mat.zeros(bin.rows*2, bin.cols*2, bin.type())
+	  	let share2 = cv.Mat.zeros(bin.rows*2, bin.cols*2, bin.type())
+
+
+	  	for(var row = 0; row < bin.rows; row++)
+	  	{
+	  		for(var col = 0; col < bin.cols; col++)
+	  		{	
+	  			var randompairs = getRndInteger(0,2);
+	  			if(bin.ucharPtr(row, col)[0] == 0)
+				{
+					var c1 = selections[randompairs][0];
+					var c2 = selections[randompairs][1];
+					//share1
+					share1.ucharPtr(2*row, 2*col)[0] = c1.ucharPtr(0,0)[0];
+					share1.ucharPtr(2*row, 2*col + 1)[0] = c1.ucharPtr(0,1)[0];
+					share1.ucharPtr(2*row + 1, 2*col)[0] = c1.ucharPtr(1,0)[0];
+					share1.ucharPtr(2*row + 1, 2*col + 1)[0] = c1.ucharPtr(1,1)[0];
+					//share2
+					share2.ucharPtr(2*row, 2*col)[0] = c2.ucharPtr(0,0)[0];
+					share2.ucharPtr(2*row, 2*col + 1)[0] = c2.ucharPtr(0,1)[0];
+					share2.ucharPtr(2*row + 1, 2*col)[0] = c2.ucharPtr(1,0)[0];
+					share2.ucharPtr(2*row + 1, 2*col + 1)[0] = c2.ucharPtr(1,1)[0];
+				}
+				else
+				{
+					var randomC = getRndInteger(0,1);
+					var rdC = selections[randompairs][randomC];
+					//share1
+					share1.ucharPtr(2*row, 2*col)[0] = rdC.ucharPtr(0,0);
+					share1.ucharPtr(2*row, 2*col + 1)[0] = rdC.ucharPtr(0,1);
+					share1.ucharPtr(2*row + 1, 2*col)[0] = rdC.ucharPtr(1,0);
+					share1.ucharPtr(2*row + 1, 2*col + 1)[0] = rdC.ucharPtr(1,1);
+					//share2
+					share2.ucharPtr(2*row, 2*col)[0] = rdC.ucharPtr(0,0);
+					share2.ucharPtr(2*row, 2*col + 1)[0] = rdC.ucharPtr(0,1);
+					share2.ucharPtr(2*row + 1, 2*col)[0] = rdC.ucharPtr(1,0);
+					share2.ucharPtr(2*row + 1, 2*col + 1)[0] = rdC.ucharPtr(1,1);
+
+				}
+	  		}
+	  	}
+	  	cv.imshow('canvasShare1', share1);
+	  	cv.imshow('canvasShare2', share2);
+	  	gray.delete();
+	  	img.delete();
+	  	bin.delete();
+	  	mat1.delete();
+	  	mat2.delete();
+	  	mat3.delete();
+	  	mat4.delete();
+	  	mat5.delete();
+	  	mat6.delete();
+	  	share1.delete();
+	  	share2.delete();
+      document.getElementsByClassName("download")[0].disabled = false;
+      document.getElementsByClassName("download")[1].disabled = false;
+	};
+//DOWNLOAD
+function download(canvas_id, download_button_id) 
+{
+  var download = document.getElementById(download_button_id);
+  var image = document.getElementById(canvas_id).toDataURL("image/png").replace("image/png", "image/octet-stream");
+  download.setAttribute("href", image);;
+}
+</script>
