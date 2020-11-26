@@ -3,7 +3,7 @@ const express = require('express');
 const handlebar  = require('express-handlebars');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000
 
 //static request
 app.use(express.static(path.join(__dirname, 'public')));
