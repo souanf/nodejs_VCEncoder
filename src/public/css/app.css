@@ -10,6 +10,9 @@ hr {
   margin: 0px;
   background-color: RGB(51, 53, 51); }
 
+a:hover {
+  color: #007bff; }
+
 .title {
   text-align: center; }
 
@@ -38,6 +41,9 @@ hr {
   color: RGB(51, 53, 51);
   letter-spacing: 4px;
   font-size: 20px; }
+
+#navbarToggleExternalContent a:hover {
+  color: #007bff; }
 
 .footer {
   background-color: RGB(245, 243, 244);
@@ -89,9 +95,9 @@ footer a {
   color: RGB(245, 243, 244);
   font-family: iCiel Gotham;
   letter-spacing: 4px;
-  background-color: RGB(51, 53, 51);
-  border-color: RGB(51, 53, 51);
-  padding: 10px 20px; }
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 20px 30px; }
 
 .submit-button {
   margin: auto;
@@ -117,7 +123,7 @@ footer a {
 .encrypt-output-caption p {
   width: 48%;
   color: RGB(245, 243, 244);
-  background-color: RGB(51, 53, 51);
+  background-color: #007bff;
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
@@ -125,13 +131,13 @@ footer a {
   letter-spacing: 2px;
   padding: 5px 0px;
   border-radius: 4px 4px 0px 0px;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 2px solid #007bff; }
 
 .encrypt-output-download a, .encrypt-output-download button {
   cursor: pointer;
   width: 48%;
   color: RGB(245, 243, 244);
-  background-color: RGB(51, 53, 51);
+  background-color: #007bff;
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
@@ -139,12 +145,12 @@ footer a {
   letter-spacing: 2px;
   padding: 5px 0px;
   border-radius: 0px 0px 4px 4px;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 2px solid #007bff; }
 
 .decrypt-output-caption p {
   width: 70%;
   color: RGB(245, 243, 244);
-  background-color: RGB(51, 53, 51);
+  background-color: #007bff;
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
@@ -152,13 +158,13 @@ footer a {
   letter-spacing: 2px;
   padding: 5px 0px;
   border-radius: 4px 4px 0px 0px;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 2px solid #007bff; }
 
 .decrypt-output-download a, .decrypt-output-download button {
   cursor: pointer;
   width: 70%;
   color: RGB(245, 243, 244);
-  background-color: RGB(51, 53, 51);
+  background-color: #007bff;
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
@@ -166,17 +172,17 @@ footer a {
   letter-spacing: 2px;
   padding: 5px 0px;
   border-radius: 0px 0px 4px 4px;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 2px solid #007bff; }
 
 .encrypt-input, .decrypt-input {
   display: flex; }
 
 .encrypt-input canvas {
   margin: auto;
-  width: 35%;
+  width: 48%;
   border: 2px solid RGB(51, 53, 51); }
 
 .decrypt-input canvas {
   margin: auto;
-  width: 90%;
+  width: 96%;
   border: 2px solid RGB(51, 53, 51); }

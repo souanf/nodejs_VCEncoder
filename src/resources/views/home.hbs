@@ -1,6 +1,10 @@
-
+<div class= "encrypt-output-caption">
+  <p>INPUT IMAGE</p> 
+</div>
 <div class="input-img-container" hidden>
   <img id="imageSrc" src="/img/thumnails.jpg" onload="fill_input_canvas()" hidden/>
+  <img id="imageOut1" src="/img/share1_output_thumnails.jpg" onload="fill_input_canvas()" hidden/>
+  <img id="imageOut2" src="/img/share2_output_thumnails.jpg" onload="fill_input_canvas()" hidden/>
 </div>
 <div class="encrypt-input">
   <canvas id="canvas-imgSrc"></canvas>
@@ -44,9 +48,15 @@
 	function fill_input_canvas()
 	{
 		let imgElement = document.getElementById('imageSrc');
+		let Out1Element = document.getElementById('imageOut1');
+		let Out2Element = document.getElementById('imageOut2');
 		let img = cv.imread(imgElement);
+		let Out1 = cv.imread(Out1Element);
+		let Out2 = cv.imread(Out2Element);
 		cv.imshow('canvas-imgSrc', img);
-		img.delete();
+		cv.imshow('canvasShare1', Out1);
+		cv.imshow('canvasShare2', Out2);
+		img.delete();Out1.delete();Out2.delete()
 	}
 	//ENCRYPT
 		function getRndInteger(min, max) 

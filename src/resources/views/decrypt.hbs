@@ -1,7 +1,12 @@
+<div class= "encrypt-output-caption">
+  <p>SHARE1</p>
+  <p>SHARE2</p> 
+</div>
 <div style="display: flex;">
     <div style="margin: auto;">
         <div class="input-img-container" hidden>
           <img id="image1Src" src="/img/share1_thumnails.jpg" onload="fill_input_canvas('image1Src', 'canvas-img1Src')" hidden/>
+          <img id="imageOut" src="/img/decrypt_output_thumnails.jpg" onload="fill_Output_canvas()" hidden/>
         </div>
           <div class="decrypt-input">
             <canvas id="canvas-img1Src"></canvas>
@@ -52,9 +57,16 @@
 	{
 		let imgElement = document.getElementById(img_id);
 		let img = cv.imread(imgElement);
-    console.log(canvas_id);
 		cv.imshow(canvas_id, img);
 		img.delete();
+	}
+  
+	function fill_Output_canvas()
+	{
+		let imgElement = document.getElementById("imageOut");
+		let Out = cv.imread(imgElement);
+    cv.imshow('canvas-decrypt', Out);
+		Out.delete();
 	}
   //load opencv lib
   function onOpenCvReady() 
@@ -64,6 +76,7 @@
     document.getElementsByClassName("custom-file-input")[1].disabled = false;
 		fill_input_canvas('image1Src', 'canvas-img1Src');
 		fill_input_canvas('image2Src', 'canvas-img2Src');
+		fill_Output_canvas();
   }
   //DECRYPT
     let img1Element = document.getElementById('image1Src');
