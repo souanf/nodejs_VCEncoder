@@ -31,7 +31,7 @@
 </div>
 
 <div class= "output-download">
-  <a id="decrypt-download" download="share1.png">
+  <a id="decrypt-download" download="decrypt.png">
     <button class="download" type="button" onClick="download('canvas-decrypt','decrypt-download')" disabled>DOWNLOAD</button>
   </a>
 </div>
@@ -69,7 +69,7 @@ function onOpenCvReady()
 	  	let share1 = cv.imread(img1Element);
 	  	let share2 = cv.imread(img2Element);
 	  	let decrypt = cv.Mat.zeros(share1.rows, share1.cols, share1.type())
-        cv.bitwise_and(share1, share2, decrypt);
+      cv.bitwise_and(share1, share2, decrypt);
 	  	cv.imshow('canvas-decrypt', decrypt);
 	  	share1.delete();
 	  	share2.delete();
@@ -81,6 +81,6 @@ function download(canvas_id, download_button_id)
 {
   var download = document.getElementById(download_button_id);
   var image = document.getElementById(canvas_id).toDataURL("image/png").replace("image/png", "image/octet-stream");
-  download.setAttribute("href", image);;
+  download.setAttribute("href", image);
 }
 </script>
