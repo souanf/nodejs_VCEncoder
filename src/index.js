@@ -20,6 +20,10 @@ app.get('/', (req, res) => {
 app.get('/decrypt', (req, res) => {
   res.render('decrypt');
 })
+
+app.get('/textEncrypt', (req, res) => {
+  res.render('textEncrypt');
+})
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

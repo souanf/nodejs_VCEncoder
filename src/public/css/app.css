@@ -5,45 +5,66 @@ h1 {
   color: RGB(51, 53, 51); }
 
 hr {
-  border: 2px solid RGB(51, 53, 51);
-  border-radius: 5px;
-  margin: 0px;
+  border: 0.2vw solid RGB(51, 53, 51);
+  border-radius: 5vw;
+  margin: 0vw;
   background-color: RGB(51, 53, 51); }
 
+[class*="col-"] {
+  padding: 0vw 0.5vw; }
+
+.modal {
+  font-family: iCiel Gotham;
+  color: RGB(51, 53, 51);
+  letter-spacing: 0.1vw;
+  font-size: 2vw; }
+
+.modal .modal-body {
+  font-family: iCiel Gotham;
+  letter-spacing: 0vw;
+  font-size: 1vw; }
+
 a:hover {
-  color: #007bff; }
+  color: RGB(0, 187, 249); }
 
 .title {
-  text-align: center; }
+  text-align: right; }
 
 .title h1 {
   font-family: iCiel Gotham;
   margin: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 3.5vw;
   color: RGB(51, 53, 51);
-  letter-spacing: 4px;
-  font-size: 30px; }
+  letter-spacing: 0.4vw;
+  font-size: 3vw; }
+
+.title p {
+  font-family: iCiel Gotham;
+  margin: auto;
+  margin-bottom: 3vw;
+  color: RGB(51, 53, 51);
+  letter-spacing: 0.1vw;
+  font-size: 1.5vw; }
 
 .navbar {
-  padding: 0px;
-  padding-top: 30px; }
+  padding: 0vw;
+  padding-top: 3vw; }
 
 .navbar-light .navbar-toggler {
   border-color: transparent;
-  padding: 0px; }
+  padding: 0vw; }
 
 .navbar-toggler-icon {
-  font-size: 50px; }
+  font-size: 5vw; }
 
 #navbarToggleExternalContent a {
   font-family: iCiel Gotham;
   color: RGB(51, 53, 51);
-  letter-spacing: 4px;
-  font-size: 20px; }
+  letter-spacing: 0.4vw;
+  font-size: 2vw; }
 
 #navbarToggleExternalContent a:hover {
-  color: #007bff; }
+  color: RGB(0, 187, 249); }
 
 .footer {
   background-color: RGB(245, 243, 244);
@@ -55,54 +76,71 @@ a:hover {
 .footer h1 {
   text-align: center;
   margin: auto;
-  margin-top: 40px;
-  margin-bottom: 5px;
+  margin-top: 4vw;
+  margin-bottom: 0.5vw;
   color: RGB(51, 53, 51);
-  letter-spacing: 4px;
-  font-size: 30px; }
+  letter-spacing: 0.4vw;
+  font-size: 3vw; }
 
 footer h2 {
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 20px;
-  letter-spacing: 2px;
-  margin-bottom: 41px; }
+  font-size: 1.5vw;
+  letter-spacing: 0.2vw;
+  margin-bottom: 4vw; }
 
 footer a {
   color: RGB(51, 53, 51); }
 
+.input-message {
+  margin: 0vw 15% 2vw 15%;
+  width: auto; }
+
+.input-message .input-text {
+  font-family: iCiel Gotham;
+  color: RGB(245, 243, 244);
+  background-color: RGB(51, 53, 51); }
+
+#type-box {
+  font-family: iCiel Gotham;
+  color: RGB(51, 53, 51); }
+
 .input-img-container {
-  padding: 10px;
+  padding: 1vw;
   text-align: center; }
 
-#image1Src, #image2Src {
-  height: 600px; }
-
 .upload {
-  margin-top: 15px; }
+  margin: 2vw 0vw; }
 
 .custom-file-label {
+  cursor: pointer;
   font-family: iCiel Gotham;
   color: RGB(51, 53, 51);
-  letter-spacing: 2px;
-  margin: 0px 10%; }
+  letter-spacing: 0vw;
+  margin: 0vw 10%; }
+
+.custom-file-label::after {
+  content: Brows;
+  background-color: RGB(51, 53, 51);
+  color: RGB(245, 243, 244);
+  font-family: iCiel Gotham; }
 
 .encrypt-upload {
-  margin: 0px 25%; }
+  margin: 0vw 15%; }
 
 .submit {
-  font-size: 15px;
+  font-size: 1.5vw;
   color: RGB(245, 243, 244);
   font-family: iCiel Gotham;
-  letter-spacing: 4px;
-  background-color: #007bff;
-  border-color: #007bff;
-  padding: 20px 30px; }
+  letter-spacing: 0.4vw;
+  background-color: RGB(0, 187, 249);
+  border-color: RGB(0, 187, 249);
+  padding: 2vw 3vw; }
 
 .submit-button {
   margin: auto;
   text-align: center;
-  margin: 15px; }
+  margin: 1.5vw; }
 
 .encrypt-output, .decrypt-output {
   display: flex; }
@@ -110,12 +148,12 @@ footer a {
 .encrypt-output canvas {
   margin: auto;
   width: 48%;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 0.2vw solid RGB(51, 53, 51); }
 
 .decrypt-output canvas {
   margin: auto;
   width: 70%;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 0.2vw solid RGB(51, 53, 51); }
 
 .decrypt-output-caption, .decrypt-output-download, .encrypt-output-caption, .encrypt-output-download {
   display: flex; }
@@ -123,56 +161,66 @@ footer a {
 .encrypt-output-caption p {
   width: 48%;
   color: RGB(245, 243, 244);
-  background-color: #007bff;
+  background-color: RGB(0, 187, 249);
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 20px;
-  letter-spacing: 2px;
-  padding: 5px 0px;
-  border-radius: 4px 4px 0px 0px;
-  border: 2px solid #007bff; }
+  font-size: 2vw;
+  letter-spacing: 0.2vw;
+  padding: 0.5vw 0vw;
+  border-radius: 0.4vw 0.4vw 0vw 0vw;
+  border: 0.2vw solid RGB(0, 187, 249); }
+
+.text-area {
+  text-align: center; }
+
+#text {
+  font-family: iCiel Gotham;
+  width: 48%;
+  padding: 1vw;
+  letter-spacing: 0.3vw;
+  font-size: 2vw; }
 
 .encrypt-output-download a, .encrypt-output-download button {
   cursor: pointer;
   width: 48%;
   color: RGB(245, 243, 244);
-  background-color: #007bff;
+  background-color: RGB(0, 187, 249);
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 20px;
-  letter-spacing: 2px;
-  padding: 5px 0px;
-  border-radius: 0px 0px 4px 4px;
-  border: 2px solid #007bff; }
+  font-size: 2vw;
+  letter-spacing: 0.2vw;
+  padding: 0.5vw 0vw;
+  border-radius: 0vw 0vw 0.4vw 0.4vw;
+  border: 0.2vw solid RGB(0, 187, 249); }
 
 .decrypt-output-caption p {
   width: 70%;
   color: RGB(245, 243, 244);
-  background-color: #007bff;
+  background-color: RGB(0, 187, 249);
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 20px;
-  letter-spacing: 2px;
-  padding: 5px 0px;
-  border-radius: 4px 4px 0px 0px;
-  border: 2px solid #007bff; }
+  font-size: 2vw;
+  letter-spacing: 0.2vw;
+  padding: 0.5vw 0vw;
+  border-radius: 0.4vw 0.4vw 0vw 0vw;
+  border: 0.2vw solid RGB(0, 187, 249); }
 
 .decrypt-output-download a, .decrypt-output-download button {
   cursor: pointer;
   width: 70%;
   color: RGB(245, 243, 244);
-  background-color: #007bff;
+  background-color: RGB(0, 187, 249);
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 20px;
-  letter-spacing: 2px;
-  padding: 5px 0px;
-  border-radius: 0px 0px 4px 4px;
-  border: 2px solid #007bff; }
+  font-size: 2vw;
+  letter-spacing: 0.2vw;
+  padding: 0.5vw 0vw;
+  border-radius: 0vw 0vw 0.4vw 0.4vw;
+  border: 0.2vw solid RGB(0, 187, 249); }
 
 .encrypt-input, .decrypt-input {
   display: flex; }
@@ -180,9 +228,9 @@ footer a {
 .encrypt-input canvas {
   margin: auto;
   width: 48%;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 0.2vw solid RGB(51, 53, 51); }
 
 .decrypt-input canvas {
   margin: auto;
   width: 96%;
-  border: 2px solid RGB(51, 53, 51); }
+  border: 0.2vw solid RGB(51, 53, 51); }

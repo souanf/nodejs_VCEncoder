@@ -1,3 +1,27 @@
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Cannot degenerate</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        Share1 and Share2 are not the same size
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
 <div class= "encrypt-output-caption">
   <p>SHARE1</p>
   <p>SHARE2</p> 
@@ -13,7 +37,7 @@
           </div>
         <div class="custom-file upload">
           <input type="file" class="custom-file-input" id="customFile1" name="filename" disabled>
-          <label class="custom-file-label" for="customFile1">Choose your image</label>
+          <label class="custom-file-label" for="customFile1">Choose image</label>
         </div>
     </div>
     <div style="margin: auto;">
@@ -25,14 +49,13 @@
           </div>
         <div class="custom-file upload">
           <input type="file" class="custom-file-input" id="customFile2" name="filename" disabled>
-          <label class="custom-file-label" for="customFile2">Choose your image</label>
+          <label class="custom-file-label" for="customFile2">Choose image</label>
         </div>
     </div>
 </div>
 <div class="submit-button">
-  <button type="submit" class="btn submit" id="decrypt" disabled>DECRYPT</button>
+  <button type="submit" class="btn submit" id="decrypt" disabled>DEGENERATE</button>
 </div>
-
 <div class= "decrypt-output-caption">
   <p>RESULT</p>
 </div>
@@ -95,6 +118,10 @@
     {
         let share1 = cv.imread(img1Element);
         let share2 = cv.imread(img2Element);
+        if (share1.rows != share2.rows || share1.cols != share2.cols){
+          $('#myModal').modal('show');
+          return;
+        }
         let decrypt = cv.Mat.zeros(share1.rows, share1.cols, share1.type())
         cv.bitwise_and(share1, share2, decrypt);
         cv.imshow('canvas-decrypt', decrypt);

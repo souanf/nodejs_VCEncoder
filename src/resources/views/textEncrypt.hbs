@@ -1,0 +1,55 @@
+
+<img id="imageOut1" src="/img/share1_output_thumnails.jpg" onload="fill_input_canvas()" hidden/>
+<img id="imageOut2" src="/img/share2_output_thumnails.jpg" onload="fill_input_canvas()" hidden/>
+<div class= "encrypt-output-caption">
+  <p>YOUR MESSAGE</p> 
+</div>
+<canvas id="customFile"hidden></canvas>
+<img id="imageSrc"hidden>
+
+<div class="text-area">
+    <textarea id="text" placeholder="Text"></textarea>
+</div>
+
+
+<div class="submit-button">
+  <button type="submit" class="btn submit" id="generate" disabled>GENERATE</button>
+</div>
+<div class= "encrypt-output-caption">
+  <p>SHARE1</p>
+  <p>SHARE2</p> 
+</div>
+<div class="encrypt-output">
+  <canvas id="canvasShare1"></canvas>
+  <canvas id="canvasShare2"></canvas>
+</div>
+<div class= "encrypt-output-download">
+  <a id="Share1-download" download="share1.png">
+    <button class="download" type="button" onClick="download('canvasShare1','Share1-download')" disabled>DOWNLOAD</button>
+  </a>
+  <a id="Share2-download" download="share2.png">
+    <button class="download" type="button" onClick="download('canvasShare2','Share2-download')" disabled>DOWNLOAD</button>
+  </a>
+</div>
+<script type="text/javascript">
+
+	//load opencv lib
+	function onOpenCvReady() 
+	{
+		document.getElementsByClassName("submit")[0].disabled = false;
+		fill_output_canvas();
+	}
+    //fill output canvas
+	function fill_output_canvas()
+	{
+		let Out1Element = document.getElementById('imageOut1');
+		let Out2Element = document.getElementById('imageOut2');
+		let Out1 = cv.imread(Out1Element);
+		let Out2 = cv.imread(Out2Element);
+		cv.imshow('canvasShare1', Out1);
+		cv.imshow('canvasShare2', Out2);
+		Out1.delete();Out2.delete()
+	}
+</script>
+{{>text2img}}
+{{>encryptSCR}}
