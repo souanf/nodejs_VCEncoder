@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   res.render('home');
 })
 
-app.get('/DECRYPT', (req, res) => {
+app.get('/decrypt', (req, res) => {
   res.render('decrypt');
 })
 app.listen(port, () => {

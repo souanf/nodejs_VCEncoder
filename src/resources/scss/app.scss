@@ -74,11 +74,8 @@ footer a{
     padding: 10px;
     text-align: center;
 }
-#imageSrc {
-    height: 300px;
-}
 #image1Src, #image2Src{
-    width: 600px;
+    height: 600px;
 }
 .upload{
     margin-top: 15px;
@@ -106,18 +103,24 @@ footer a{
     text-align: center;
     margin: 15px;
 }
-.output{
+.encrypt-output, .decrypt-output{
     display: flex;
 }
-.output canvas{
+.encrypt-output canvas{
     margin: auto;
     width: 48%;
     border: 2px solid $text-color;
 }
-.output-caption, .output-download{
+
+.decrypt-output canvas{
+    margin: auto;
+    width: 70%;
+    border: 2px solid $text-color;
+}
+.decrypt-output-caption, .decrypt-output-download, .encrypt-output-caption, .encrypt-output-download{
     display: flex;
 }
-.output-caption p{ 
+.encrypt-output-caption p{ 
     width: 48%;
     color: $fill-color;
     background-color: $text-color;
@@ -130,7 +133,7 @@ footer a{
     border-radius: 4px 4px 0px 0px;
     border: 2px solid $text-color;
 }
-.output-download a, .output-download button{
+.encrypt-output-download a, .encrypt-output-download button{
     cursor: pointer;
     width: 48%;
     color: $fill-color;
@@ -142,5 +145,46 @@ footer a{
     letter-spacing : 2px;
     padding: 5px 0px;
     border-radius: 0px 0px 4px 4px;
+    border: 2px solid $text-color;
+}
+
+.decrypt-output-caption p{ 
+    width: 70%;
+    color: $fill-color;
+    background-color: $text-color;
+    margin: auto;
+    text-align: center;
+    font-family: iCiel Gotham;
+    font-size: 20px;
+    letter-spacing : 2px;
+    padding: 5px 0px;
+    border-radius: 4px 4px 0px 0px;
+    border: 2px solid $text-color;
+}
+.decrypt-output-download a, .decrypt-output-download button{
+    cursor: pointer;
+    width: 70%;
+    color: $fill-color;
+    background-color: $text-color;
+    margin: auto;
+    text-align: center;
+    font-family: iCiel Gotham;
+    font-size: 20px;
+    letter-spacing : 2px;
+    padding: 5px 0px;
+    border-radius: 0px 0px 4px 4px;
+    border: 2px solid $text-color;
+}
+.encrypt-input, .decrypt-input{
+    display: flex;
+}
+.encrypt-input canvas{
+    margin: auto;
+    width: 35%;
+    border: 2px solid $text-color;
+}
+.decrypt-input canvas{
+    margin: auto;
+    width:  90%;
     border: 2px solid $text-color;
 }
