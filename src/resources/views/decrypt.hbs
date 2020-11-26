@@ -73,8 +73,8 @@ function onOpenCvReady()
 	  	cv.imshow('canvas-decrypt', decrypt);
 	  	share1.delete();
 	  	share2.delete();
+      decrypt.delete();
       document.getElementsByClassName("download")[0].disabled = false;
-      document.getElementsByClassName("download")[1].disabled = false;
 	};
 //DOWNLOAD
 function download(canvas_id, download_button_id) 
