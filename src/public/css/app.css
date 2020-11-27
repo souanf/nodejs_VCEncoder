@@ -1,31 +1,48 @@
+:root {
+  font-size: 1vw; }
+
 body {
   background-color: RGB(245, 243, 244); }
 
 h1 {
   color: RGB(51, 53, 51); }
 
+::-webkit-scrollbar {
+  width: 10px; }
+
 hr {
-  border: 0.2vw solid RGB(51, 53, 51);
-  border-radius: 5vw;
-  margin: 0vw;
+  border: 0.1rem solid RGB(51, 53, 51);
+  border-radius: 5rem;
+  margin: 0rem;
   background-color: RGB(51, 53, 51); }
 
 [class*="col-"] {
-  padding: 0vw 0.5vw; }
+  padding: 0rem 0.5rem; }
+
+.col-1 {
+  margin-left: -1.5rem; }
 
 .modal {
   font-family: iCiel Gotham;
   color: RGB(51, 53, 51);
-  letter-spacing: 0.1vw;
-  font-size: 2vw; }
+  letter-spacing: 0.1rem;
+  font-size: 2rem; }
 
 .modal .modal-body {
   font-family: iCiel Gotham;
-  letter-spacing: 0vw;
-  font-size: 1vw; }
+  letter-spacing: 0rem;
+  font-size: 1rem; }
 
 a:hover {
   color: RGB(0, 187, 249); }
+
+.header {
+  background-color: RGB(245, 243, 244);
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  float: none;
+  top: 0; }
 
 .title {
   text-align: right; }
@@ -33,35 +50,34 @@ a:hover {
 .title h1 {
   font-family: iCiel Gotham;
   margin: auto;
-  margin-top: 3.5vw;
+  margin-top: 1rem;
   color: RGB(51, 53, 51);
-  letter-spacing: 0.4vw;
-  font-size: 3vw; }
+  letter-spacing: 0.4rem;
+  font-size: 1.5rem; }
 
 .title p {
   font-family: iCiel Gotham;
   margin: auto;
-  margin-bottom: 3vw;
+  margin-bottom: 1rem;
   color: RGB(51, 53, 51);
-  letter-spacing: 0.1vw;
-  font-size: 1.5vw; }
+  letter-spacing: 0.1rem;
+  font-size: 1rem; }
 
 .navbar {
-  padding: 0vw;
-  padding-top: 3vw; }
+  padding: 0rem; }
 
 .navbar-light .navbar-toggler {
   border-color: transparent;
-  padding: 0vw; }
+  padding-top: -0.5rem; }
 
 .navbar-toggler-icon {
-  font-size: 5vw; }
+  font-size: 3.5rem; }
 
 #navbarToggleExternalContent a {
   font-family: iCiel Gotham;
   color: RGB(51, 53, 51);
-  letter-spacing: 0.4vw;
-  font-size: 2vw; }
+  letter-spacing: 0.2rem;
+  font-size: 1rem; }
 
 #navbarToggleExternalContent a:hover {
   color: RGB(0, 187, 249); }
@@ -76,24 +92,24 @@ a:hover {
 .footer h1 {
   text-align: center;
   margin: auto;
-  margin-top: 4vw;
-  margin-bottom: 0.5vw;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   color: RGB(51, 53, 51);
-  letter-spacing: 0.4vw;
-  font-size: 3vw; }
+  letter-spacing: 0.4rem;
+  font-size: 1.5rem; }
 
 footer h2 {
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 1.5vw;
-  letter-spacing: 0.2vw;
-  margin-bottom: 4vw; }
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem; }
 
 footer a {
   color: RGB(51, 53, 51); }
 
 .input-message {
-  margin: 0vw 15% 2vw 15%;
+  margin: 0rem 15% 2rem 15%;
   width: auto; }
 
 .input-message .input-text {
@@ -106,18 +122,18 @@ footer a {
   color: RGB(51, 53, 51); }
 
 .input-img-container {
-  padding: 1vw;
+  padding: 1rem;
   text-align: center; }
 
 .upload {
-  margin: 2vw 0vw; }
+  margin: 1rem 0rem; }
 
 .custom-file-label {
   cursor: pointer;
   font-family: iCiel Gotham;
   color: RGB(51, 53, 51);
-  letter-spacing: 0vw;
-  margin: 0vw 10%; }
+  letter-spacing: 0rem;
+  margin: 0rem 10%; }
 
 .custom-file-label::after {
   content: Brows;
@@ -126,21 +142,22 @@ footer a {
   font-family: iCiel Gotham; }
 
 .encrypt-upload {
-  margin: 0vw 15%; }
+  margin: 0rem 15%; }
 
 .submit {
-  font-size: 1.5vw;
+  font-size: 1.5rem;
   color: RGB(245, 243, 244);
   font-family: iCiel Gotham;
-  letter-spacing: 0.4vw;
+  letter-spacing: 0.4rem;
   background-color: RGB(0, 187, 249);
   border-color: RGB(0, 187, 249);
-  padding: 2vw 3vw; }
+  padding: 1rem 2rem; }
 
 .submit-button {
   margin: auto;
   text-align: center;
-  margin: 1.5vw; }
+  margin-top: 0.2rem;
+  margin-bottom: 1.7rem; }
 
 .encrypt-output, .decrypt-output {
   display: flex; }
@@ -148,12 +165,12 @@ footer a {
 .encrypt-output canvas {
   margin: auto;
   width: 48%;
-  border: 0.2vw solid RGB(51, 53, 51); }
+  border: 0.2rem solid RGB(51, 53, 51); }
 
 .decrypt-output canvas {
   margin: auto;
   width: 70%;
-  border: 0.2vw solid RGB(51, 53, 51); }
+  border: 0.2rem solid RGB(51, 53, 51); }
 
 .decrypt-output-caption, .decrypt-output-download, .encrypt-output-caption, .encrypt-output-download {
   display: flex; }
@@ -165,11 +182,11 @@ footer a {
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 2vw;
-  letter-spacing: 0.2vw;
-  padding: 0.5vw 0vw;
-  border-radius: 0.4vw 0.4vw 0vw 0vw;
-  border: 0.2vw solid RGB(0, 187, 249); }
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  padding: 0.2rem 0rem;
+  border-radius: 0.4rem 0.4rem 0rem 0rem;
+  border: 0.2rem solid RGB(0, 187, 249); }
 
 .text-area {
   text-align: center; }
@@ -177,9 +194,9 @@ footer a {
 #text {
   font-family: iCiel Gotham;
   width: 48%;
-  padding: 1vw;
-  letter-spacing: 0.3vw;
-  font-size: 2vw; }
+  padding: 1rem;
+  letter-spacing: 0.2rem;
+  font-size: 1rem; }
 
 .encrypt-output-download a, .encrypt-output-download button {
   cursor: pointer;
@@ -189,11 +206,11 @@ footer a {
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 2vw;
-  letter-spacing: 0.2vw;
-  padding: 0.5vw 0vw;
-  border-radius: 0vw 0vw 0.4vw 0.4vw;
-  border: 0.2vw solid RGB(0, 187, 249); }
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  padding: 0.2rem 0rem;
+  border-radius: 0rem 0rem 0.4rem 0.4rem;
+  border: 0.2rem solid RGB(0, 187, 249); }
 
 .decrypt-output-caption p {
   width: 70%;
@@ -202,11 +219,11 @@ footer a {
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 2vw;
-  letter-spacing: 0.2vw;
-  padding: 0.5vw 0vw;
-  border-radius: 0.4vw 0.4vw 0vw 0vw;
-  border: 0.2vw solid RGB(0, 187, 249); }
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  padding: 0.2rem 0rem;
+  border-radius: 0.4rem 0.4rem 0rem 0rem;
+  border: 0.2rem solid RGB(0, 187, 249); }
 
 .decrypt-output-download a, .decrypt-output-download button {
   cursor: pointer;
@@ -216,11 +233,11 @@ footer a {
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
-  font-size: 2vw;
-  letter-spacing: 0.2vw;
-  padding: 0.5vw 0vw;
-  border-radius: 0vw 0vw 0.4vw 0.4vw;
-  border: 0.2vw solid RGB(0, 187, 249); }
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  padding: 0.2rem 0rem;
+  border-radius: 0rem 0rem 0.4rem 0.4rem;
+  border: 0.2rem solid RGB(0, 187, 249); }
 
 .encrypt-input, .decrypt-input {
   display: flex; }
@@ -228,9 +245,9 @@ footer a {
 .encrypt-input canvas {
   margin: auto;
   width: 48%;
-  border: 0.2vw solid RGB(51, 53, 51); }
+  border: 0.2rem solid RGB(51, 53, 51); }
 
 .decrypt-input canvas {
   margin: auto;
   width: 96%;
-  border: 0.2vw solid RGB(51, 53, 51); }
+  border: 0.2rem solid RGB(51, 53, 51); }

@@ -24,6 +24,10 @@ app.get('/decrypt', (req, res) => {
 app.get('/textEncrypt', (req, res) => {
   res.render('textEncrypt');
 })
+
+app.get('/WaterMark', (req, res) => {
+  res.render('WaterMark');
+})
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
