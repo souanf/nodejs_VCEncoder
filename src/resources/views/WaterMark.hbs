@@ -68,7 +68,8 @@
   </a>
 </div>
 <script type="text/javascript">
-
+	var element = document.getElementsByClassName("nav-link");
+  	element[2].classList.add("active");
 	//load opencv lib
 	function onOpenCvReady() 
 	{
@@ -94,7 +95,7 @@
 		cv.imshow('canvasShare2', Out2);
 		img.delete();Out1.delete();Out2.delete()
 	}
-  //convert text to image
+  	//convert text to image
     var canvas = document.getElementById('imgCanvas'),
             ctx = canvas.getContext('2d'),
         img = document.getElementById('imageFromText');
@@ -104,128 +105,130 @@
         el.style.height = (el.scrollHeight)+"px";
     }
 
-    var generate = function(x, y, Height, Width) {
-        var text = document.getElementById('text').value.split("\n").join("\n");
-        var lines = text.split('\n');
-        var lineLengthOrder = lines.slice(0).sort(function(a, b) {
-            return b.length - a.length;
-        });
-        ctx.canvas.width = Width;
-        ctx.canvas.height = Height;
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.textBaseline = "top";
-        ctx.fillStyle = "black";
-        ctx.font = 0.1*Width+"px iCiel Gotham";
-        for (var i = 0; i<lines.length; i++)
-            ctx.fillText(lines[i], x, y + (i*Height) );
-        img.src = ctx.canvas.toDataURL();
-    }
-    generate(20, 20, 512, 769);
+    var generate = function(x, y, Height, Width) 
+	{
+		var text = document.getElementById('text').value.split("\n").join("\n");
+		var lines = text.split('\n');
+		var lineLengthOrder = lines.slice(0).sort(function(a, b) {
+			return b.length - a.length;
+		});
+		ctx.canvas.width = Width;
+		ctx.canvas.height = Height;
+		ctx.fillStyle = "white";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		ctx.textBaseline = "top";
+		ctx.fillStyle = "black";
+		ctx.font = 0.1*Width+"px iCiel Gotham";
+		for (var i = 0; i<lines.length; i++)
+			ctx.fillText(lines[i], x, y + (i*Height) );
+		img.src = ctx.canvas.toDataURL();
+	}
+	generate(20, 20, 512, 769);
 
-    	//ENCRYPT
-		function getRndInteger(min, max) 
+	//ENCRYPT
+	function getRndInteger(min, max) 
+	{
+		return Math.floor(Math.random() * (max - min + 1) ) + min;
+	}
+	let imgElement = document.getElementById('imageSrc');
+	let inputElement = document.getElementById('customFile');
+	inputElement.addEventListener('change', (e) => {
+	document.getElementsByClassName("download")[0].disabled = true;
+	document.getElementsByClassName("download")[1].disabled = true;
+	imgElement.src = URL.createObjectURL(e.target.files[0]);},false);
+
+	document.getElementById("generate").onclick = function() 
+	{	
+		//read input img					
+		let beforeIMG = cv.imread(imgElement);
+		//convert text to img2 using input img height & width
+		generate(20, 20, 0.5*beforeIMG.rows, 0.5*beforeIMG.cols);
+		//encrypt img2 
+		let mark = document.getElementById('imgCanvas');
+		let img = cv.imread(mark);
+		if (img.rows * img.cols > 4000000)
 		{
-			return Math.floor(Math.random() * (max - min + 1) ) + min;
+			$('#myModal').modal('show');
+			return;
 		}
-		let imgElement = document.getElementById('imageSrc');
-		let inputElement = document.getElementById('customFile');
-		inputElement.addEventListener('change', (e) => {
-		document.getElementsByClassName("download")[0].disabled = true;
-		document.getElementsByClassName("download")[1].disabled = true;
-		imgElement.src = URL.createObjectURL(e.target.files[0]);},false);
-	
-		document.getElementById("generate").onclick = function() 
-		{	
-      //read input img					
-      let beforeIMG = cv.imread(imgElement);
-      //convert text to img2 using input img height & width
-      generate(20, 20, 0.5*beforeIMG.rows, 0.5*beforeIMG.cols);
-      //encrypt img2 
-      let mark = document.getElementById('imgCanvas');
-      			let img = cv.imread(mark);
-			if (img.rows * img.cols > 4000000){
-				$('#myModal').modal('show');
-          		return;
-			}
-			let gray = new cv.Mat();
-			let bin = new cv.Mat()
-      var white = 255;
-      var black = 120;
-			let mat1 = cv.matFromArray(2, 2, cv.CV_8U, [black, black, white, white]);
-			let mat2 = cv.matFromArray(2, 2, cv.CV_8U, [white, white, black, black]);
-			let mat3 = cv.matFromArray(2, 2, cv.CV_8U, [black, white, black, white]);
-			let mat4 = cv.matFromArray(2, 2, cv.CV_8U, [white, black, white, black]);
-			let mat5 = cv.matFromArray(2, 2, cv.CV_8U, [white, black, black, white]);
-			let mat6 = cv.matFromArray(2, 2, cv.CV_8U, [black, white, white, black]);
-			var selections = [[mat1, mat2], [mat3, mat4], [mat5, mat6]]
+		let gray = new cv.Mat();
+		let bin = new cv.Mat()
+		var white = 255;
+		var black = 210;
+		let mat1 = cv.matFromArray(2, 2, cv.CV_8U, [black, black, white, white]);
+		let mat2 = cv.matFromArray(2, 2, cv.CV_8U, [white, white, black, black]);
+		let mat3 = cv.matFromArray(2, 2, cv.CV_8U, [black, white, black, white]);
+		let mat4 = cv.matFromArray(2, 2, cv.CV_8U, [white, black, white, black]);
+		let mat5 = cv.matFromArray(2, 2, cv.CV_8U, [white, black, black, white]);
+		let mat6 = cv.matFromArray(2, 2, cv.CV_8U, [black, white, white, black]);
+		var selections = [[mat1, mat2], [mat3, mat4], [mat5, mat6]]
 
-			cv.cvtColor(img, gray, cv.COLOR_RGBA2GRAY, 0);
-			cv.threshold(gray, bin, 0, white, cv.THRESH_BINARY | cv.THRESH_OTSU);
-			let share1 = cv.Mat.zeros(bin.rows*2 + beforeIMG.rows % 2, bin.cols*2 + beforeIMG.cols % 2, bin.type())
-			let share2 = cv.Mat.zeros(bin.rows*2 + beforeIMG.rows % 2, bin.cols*2 + beforeIMG.cols % 2, bin.type())
+		cv.cvtColor(img, gray, cv.COLOR_RGBA2GRAY, 0);
+		cv.threshold(gray, bin, 0, white, cv.THRESH_BINARY | cv.THRESH_OTSU);
+		let share1 = cv.Mat.zeros(bin.rows*2 + beforeIMG.rows % 2, bin.cols*2 + beforeIMG.cols % 2, bin.type())
+		let share2 = cv.Mat.zeros(bin.rows*2 + beforeIMG.rows % 2, bin.cols*2 + beforeIMG.cols % 2, bin.type())
 
 
-			for(var row = 0; row < bin.rows; row++)
-			{
-				for(var col = 0; col < bin.cols; col++)
-				{	
-					var randompairs = getRndInteger(0,2);
-					if(bin.ucharPtr(row, col)[0] == 0)
-					{
-						var c1 = selections[randompairs][0];
-						var c2 = selections[randompairs][1];
-						//share1
-						share1.ucharPtr(2*row, 2*col)[0] = c1.ucharPtr(0,0)[0];
-						share1.ucharPtr(2*row, 2*col + 1)[0] = c1.ucharPtr(0,1)[0];
-						share1.ucharPtr(2*row + 1, 2*col)[0] = c1.ucharPtr(1,0)[0];
-						share1.ucharPtr(2*row + 1, 2*col + 1)[0] = c1.ucharPtr(1,1)[0];
-						//share2
-						share2.ucharPtr(2*row, 2*col)[0] = c2.ucharPtr(0,0)[0];
-						share2.ucharPtr(2*row, 2*col + 1)[0] = c2.ucharPtr(0,1)[0];
-						share2.ucharPtr(2*row + 1, 2*col)[0] = c2.ucharPtr(1,0)[0];
-						share2.ucharPtr(2*row + 1, 2*col + 1)[0] = c2.ucharPtr(1,1)[0];
-					}
-					else
-					{
-						var randomC = getRndInteger(0,1);
-						var rdC = selections[randompairs][randomC];
-						//share1
-						share1.ucharPtr(2*row, 2*col)[0] = rdC.ucharPtr(0,0);
-						share1.ucharPtr(2*row, 2*col + 1)[0] = rdC.ucharPtr(0,1);
-						share1.ucharPtr(2*row + 1, 2*col)[0] = rdC.ucharPtr(1,0);
-						share1.ucharPtr(2*row + 1, 2*col + 1)[0] = rdC.ucharPtr(1,1);
-						//share2
-						share2.ucharPtr(2*row, 2*col)[0] = rdC.ucharPtr(0,0);
-						share2.ucharPtr(2*row, 2*col + 1)[0] = rdC.ucharPtr(0,1);
-						share2.ucharPtr(2*row + 1, 2*col)[0] = rdC.ucharPtr(1,0);
-						share2.ucharPtr(2*row + 1, 2*col + 1)[0] = rdC.ucharPtr(1,1);
+		for(var row = 0; row < bin.rows; row++)
+		{
+			for(var col = 0; col < bin.cols; col++)
+			{	
+				var randompairs = getRndInteger(0,2);
+				if(bin.ucharPtr(row, col)[0] == 0)
+				{
+					var c1 = selections[randompairs][0];
+					var c2 = selections[randompairs][1];
+					//share1
+					share1.ucharPtr(2*row, 2*col)[0] = c1.ucharPtr(0,0)[0];
+					share1.ucharPtr(2*row, 2*col + 1)[0] = c1.ucharPtr(0,1)[0];
+					share1.ucharPtr(2*row + 1, 2*col)[0] = c1.ucharPtr(1,0)[0];
+					share1.ucharPtr(2*row + 1, 2*col + 1)[0] = c1.ucharPtr(1,1)[0];
+					//share2
+					share2.ucharPtr(2*row, 2*col)[0] = c2.ucharPtr(0,0)[0];
+					share2.ucharPtr(2*row, 2*col + 1)[0] = c2.ucharPtr(0,1)[0];
+					share2.ucharPtr(2*row + 1, 2*col)[0] = c2.ucharPtr(1,0)[0];
+					share2.ucharPtr(2*row + 1, 2*col + 1)[0] = c2.ucharPtr(1,1)[0];
+				}
+				else
+				{
+					var randomC = getRndInteger(0,1);
+					var rdC = selections[randompairs][randomC];
+					//share1
+					share1.ucharPtr(2*row, 2*col)[0] = rdC.ucharPtr(0,0);
+					share1.ucharPtr(2*row, 2*col + 1)[0] = rdC.ucharPtr(0,1);
+					share1.ucharPtr(2*row + 1, 2*col)[0] = rdC.ucharPtr(1,0);
+					share1.ucharPtr(2*row + 1, 2*col + 1)[0] = rdC.ucharPtr(1,1);
+					//share2
+					share2.ucharPtr(2*row, 2*col)[0] = rdC.ucharPtr(0,0);
+					share2.ucharPtr(2*row, 2*col + 1)[0] = rdC.ucharPtr(0,1);
+					share2.ucharPtr(2*row + 1, 2*col)[0] = rdC.ucharPtr(1,0);
+					share2.ucharPtr(2*row + 1, 2*col + 1)[0] = rdC.ucharPtr(1,1);
 
-					}
 				}
 			}
-      // add share 1 to input img
-      for(var row = 0; row < share1.rows; row++)
-			{
-				for(var col = 0; col < share1.cols; col++)
-				{	
-          beforeIMG.ucharPtr(row, col)[0] += share1.ucharPtr(row, col)[0];
-        }
-      }
-      //show
-			cv.imshow('canvasShare1', beforeIMG);
-			cv.imshow('canvasShare2', share2);
-			gray.delete();img.delete();bin.delete();
-			mat1.delete();mat2.delete();mat3.delete();mat4.delete();mat5.delete();mat6.delete();
-			share1.delete();share2.delete();
-			document.getElementsByClassName("download")[0].disabled = false;
-			document.getElementsByClassName("download")[1].disabled = false;
-		};
+		}
+		// add share 1 to input img
+		for(var row = 0; row < share1.rows; row++)
+		{
+			for(var col = 0; col < share1.cols; col++)
+			{	
+				beforeIMG.ucharPtr(row, col)[3] = share1.ucharPtr(row, col)[0];
+			}
+		}								
+		//show
+		cv.imshow('canvasShare1', beforeIMG);
+		cv.imshow('canvasShare2', share2);
+		gray.delete();img.delete();bin.delete();
+		mat1.delete();mat2.delete();mat3.delete();mat4.delete();mat5.delete();mat6.delete();
+		share1.delete();share2.delete();
+		document.getElementsByClassName("download")[0].disabled = false;
+		document.getElementsByClassName("download")[1].disabled = false;
+	};
 	//DOWNLOAD
 	function download(canvas_id, download_button_id) 
 	{
-	var download = document.getElementById(download_button_id);
-	var image = document.getElementById(canvas_id).toDataURL("image/png").replace("image/png", "image/octet-stream");
-	download.setAttribute("href", image);
+		var download = document.getElementById(download_button_id);
+		var image = document.getElementById(canvas_id).toDataURL("image/png").replace("image/png", "image/octet-stream");
+		download.setAttribute("href", image);
 	}
 </script>

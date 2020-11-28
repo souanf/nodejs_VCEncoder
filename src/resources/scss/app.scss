@@ -34,6 +34,11 @@ hr{
 }
 a:hover{
     color: $sub-fill-color;
+    text-decoration: none;
+}
+button:focus {
+    outline: 0px dotted;
+    outline: 0px auto -webkit-focus-ring-color;
 }
 //header
 .header{
@@ -66,6 +71,11 @@ a:hover{
 .navbar{
     padding: 0rem;
 }
+.navbar-nav .active{
+    background-color: $sub-fill-color;
+
+}
+
 .navbar-light .navbar-toggler{
     border-color: transparent;
     padding-top: -0.5rem;
@@ -81,7 +91,10 @@ a:hover{
     font-size: 1rem;
 }
 #navbarToggleExternalContent a:hover{
-    color: $sub-fill-color;
+    padding-left: 1rem;
+    background-color: $text-color;
+    color: $fill-color;
+    transition: $transitionSpeed;
 }
 //footer
 .footer{
@@ -163,6 +176,12 @@ footer a{
     margin-top: 0.2rem;
     margin-bottom: 1.7rem;
 }
+
+.submit:hover{
+    background-color: $text-color;
+    color: $fill-color;
+    transition: $transitionSpeed;
+}
 .encrypt-output, .decrypt-output{
     display: flex;
 }
@@ -203,11 +222,10 @@ footer a{
     letter-spacing : 0.2rem;
     font-size: 1rem;
 }
-.encrypt-output-download a, .encrypt-output-download button{
+
+.encrypt-output-download a{
     cursor: pointer;
     width: 48%;
-    color: $fill-color;
-    background-color: $sub-fill-color;
     margin: auto;
     text-align: center;
     font-family: $font;
@@ -215,7 +233,26 @@ footer a{
     letter-spacing : 0.2rem;
     padding: 0.2rem 0rem;
     border-radius: 0rem 0rem 0.4rem 0.4rem;
-    border: 0.2rem solid $sub-fill-color;
+
+}
+.encrypt-output-download button{
+    cursor: pointer;
+    width: 48%;
+    color: $fill-color;
+    background-color: $sub-fill-color;
+    margin: 1vw auto;
+    text-align: center;
+    font-family: $font;
+    font-size: 1.5rem;
+    letter-spacing : 0.2rem;
+    padding: 0.2rem 0rem;
+    border-radius: 0.4rem;
+}
+
+.encrypt-output-download button:hover{
+    background-color: $text-color;
+    color: $fill-color;
+    transition: $transitionSpeed;
 }
 
 .decrypt-output-caption p{ 
@@ -231,19 +268,31 @@ footer a{
     border-radius: 0.4rem 0.4rem 0rem 0rem;
     border: 0.2rem solid $sub-fill-color;
 }
-.decrypt-output-download a, .decrypt-output-download button{
-    cursor: pointer;
+.decrypt-output-download a{
     width: 70%;
+    margin: auto;
+    text-align: center;
+
+}
+.decrypt-output-download button{
+    cursor: pointer;
+    width: 50%;
     color: $fill-color;
     background-color: $sub-fill-color;
-    margin: auto;
+    margin: 1vw auto;
     text-align: center;
     font-family: $font;
     font-size: 1.5rem;
     letter-spacing : 0.2rem;
     padding: 0.2rem 0rem;
-    border-radius: 0rem 0rem 0.4rem 0.4rem;
-    border: 0.2rem solid $sub-fill-color;
+    border-radius: 0.4rem;
+}
+
+.decrypt-output-download button:hover{
+    background-color: $text-color;
+    color: $fill-color;
+    transition: $transitionSpeed;
+
 }
 .encrypt-input, .decrypt-input{
     display: flex;

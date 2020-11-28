@@ -34,7 +34,12 @@ hr {
   font-size: 1rem; }
 
 a:hover {
-  color: RGB(0, 187, 249); }
+  color: RGB(0, 187, 249);
+  text-decoration: none; }
+
+button:focus {
+  outline: 0px dotted;
+  outline: 0px auto -webkit-focus-ring-color; }
 
 .header {
   background-color: RGB(245, 243, 244);
@@ -66,6 +71,9 @@ a:hover {
 .navbar {
   padding: 0rem; }
 
+.navbar-nav .active {
+  background-color: RGB(0, 187, 249); }
+
 .navbar-light .navbar-toggler {
   border-color: transparent;
   padding-top: -0.5rem; }
@@ -80,7 +88,10 @@ a:hover {
   font-size: 1rem; }
 
 #navbarToggleExternalContent a:hover {
-  color: RGB(0, 187, 249); }
+  padding-left: 1rem;
+  background-color: RGB(51, 53, 51);
+  color: RGB(245, 243, 244);
+  transition: 500ms; }
 
 .footer {
   background-color: RGB(245, 243, 244);
@@ -159,6 +170,11 @@ footer a {
   margin-top: 0.2rem;
   margin-bottom: 1.7rem; }
 
+.submit:hover {
+  background-color: RGB(51, 53, 51);
+  color: RGB(245, 243, 244);
+  transition: 500ms; }
+
 .encrypt-output, .decrypt-output {
   display: flex; }
 
@@ -198,19 +214,34 @@ footer a {
   letter-spacing: 0.2rem;
   font-size: 1rem; }
 
-.encrypt-output-download a, .encrypt-output-download button {
+.encrypt-output-download a {
   cursor: pointer;
   width: 48%;
-  color: RGB(245, 243, 244);
-  background-color: RGB(0, 187, 249);
   margin: auto;
   text-align: center;
   font-family: iCiel Gotham;
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
   padding: 0.2rem 0rem;
-  border-radius: 0rem 0rem 0.4rem 0.4rem;
-  border: 0.2rem solid RGB(0, 187, 249); }
+  border-radius: 0rem 0rem 0.4rem 0.4rem; }
+
+.encrypt-output-download button {
+  cursor: pointer;
+  width: 48%;
+  color: RGB(245, 243, 244);
+  background-color: RGB(0, 187, 249);
+  margin: 1vw auto;
+  text-align: center;
+  font-family: iCiel Gotham;
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  padding: 0.2rem 0rem;
+  border-radius: 0.4rem; }
+
+.encrypt-output-download button:hover {
+  background-color: RGB(51, 53, 51);
+  color: RGB(245, 243, 244);
+  transition: 500ms; }
 
 .decrypt-output-caption p {
   width: 70%;
@@ -225,19 +256,28 @@ footer a {
   border-radius: 0.4rem 0.4rem 0rem 0rem;
   border: 0.2rem solid RGB(0, 187, 249); }
 
-.decrypt-output-download a, .decrypt-output-download button {
-  cursor: pointer;
+.decrypt-output-download a {
   width: 70%;
+  margin: auto;
+  text-align: center; }
+
+.decrypt-output-download button {
+  cursor: pointer;
+  width: 50%;
   color: RGB(245, 243, 244);
   background-color: RGB(0, 187, 249);
-  margin: auto;
+  margin: 1vw auto;
   text-align: center;
   font-family: iCiel Gotham;
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
   padding: 0.2rem 0rem;
-  border-radius: 0rem 0rem 0.4rem 0.4rem;
-  border: 0.2rem solid RGB(0, 187, 249); }
+  border-radius: 0.4rem; }
+
+.decrypt-output-download button:hover {
+  background-color: RGB(51, 53, 51);
+  color: RGB(245, 243, 244);
+  transition: 500ms; }
 
 .encrypt-input, .decrypt-input {
   display: flex; }

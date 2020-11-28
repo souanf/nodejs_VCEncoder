@@ -71,6 +71,8 @@
 </div>
 
 <script type="text/javascript">
+  var element = document.getElementsByClassName("nav-link");
+  element[3].classList.add("active");
   //SHOW FILE NAME & LOAD INPUT IMAGE
   $(".custom-file-input").on("change", function() {
     var fileName = $(this).val().split("\\").pop();
